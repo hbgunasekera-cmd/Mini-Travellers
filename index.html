@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9MWDLKSH9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -9,6 +10,17 @@
 
   gtag('config', 'G-G9MWDLKSH9');
 </script>
+
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "327ca29c-2843-4956-8f8e-b2d5ad960888",
+    });
+  });
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mini Travellers - Ultimate Planner</title>
@@ -101,8 +113,23 @@
                     if (updated) setViewingTrip(updated);
                 }
             };
+            
+            
+useEffect(() => {
+   
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+            appId: "327ca29c-2843-4956-8f8e-b2d5ad960888",
+            allowLocalhostAsSecureOrigin: true, 
+        });
+    });
+
+    
+}, []);
 
             useEffect(() => {
+            
                 if ("geolocation" in navigator) {
                     navigator.geolocation.getCurrentPosition((pos) => {
                         const loc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
@@ -113,6 +140,7 @@
             }, []);
 
             useEffect(() => { 
+            
                 fetchData(); 
                 initGoogle();
                 if (!mapRef.current) {
@@ -123,13 +151,15 @@
             }, []);
 
             useEffect(() => {
-                if (!mapRef.current) return;
+            
                 mapLocked ? mapRef.current.dragging.disable() : mapRef.current.dragging.enable();
                 mapLocked ? mapRef.current.scrollWheelZoom.disable() : mapRef.current.scrollWheelZoom.enable();
             }, [mapLocked]);
 
-            // Fix: Add showViewModal and viewingTrip to dependencies to refresh Lucide icons in details window
+           
+
             useEffect(() => {
+            
                 updateMapElements();
                 if (window.lucide) window.lucide.createIcons();
             }, [places, selectedTrip, activeRouteFilter, userLocation, showViewModal, viewingTrip]);
