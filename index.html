@@ -23,29 +23,6 @@
     });
 </script>
     
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>    
-    <script>
-      window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-          appId: "22ed1064-75f6-4be9-b034-e7facc2b03eb",
-          safari_web_id: "web.onesignal.auto.6105f257-238b-4911-b162-8e10850787a2",
-          notifyButton: {
-            enable: true,
-            size: 'medium',
-            position: 'bottom-right',
-            text: {
-              'tip.state.unsubscribed': 'Subscribe to notifications',
-              'tip.state.subscribed': "You're subscribed",
-              'message.prenotify': 'Click to subscribe to notifications',
-              'message.action.subscribed': "Thanks for subscribing!",
-            }
-          },
-          allowLocalhostAsSecureOrigin: true 
-        });
-      });
-    </script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; height: 100vh; margin: 0; overflow: hidden; }
@@ -119,19 +96,6 @@
                 }
             };
             
-            
-useEffect(() => {
-   
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-            appId: "327ca29c-2843-4956-8f8e-b2d5ad960888",
-            allowLocalhostAsSecureOrigin: true, 
-        });
-    });
-
-    
-}, []);
 
             useEffect(() => {
             
